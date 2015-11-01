@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar" style="padding-top: 10px;">
+  <div class="container">
+	<div class="navbar">
+	  <div class="navbar-inner navbar-fixed">
+	    <div class="container" id="admin-nav-container">
+	      <ul class="nav">
+	        <li><a href="/admin/">Home</a></li>
+          <li class="active"><a>Context</a></li>
+          <li><a>Service</a></li>
+	        <li><a>Method</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</div>
+
+	<h4 id='contextName'>Context Information</h4>
+
+  <table class="table table-bordered" style="width:900px">
+    <tbody>
+      <tr>
+        <th style="width: 70px;font-weight: bold;">Deplyed Path</th><td colspan="6" style="width:500px;" id='path'>1.7.56</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <th style="width: 100px;font-weight: bold;">Access Count</th><td  style="width: 50px;" id='cAccessCount'>10000000000</td>
+        <th style="width: 100px;font-weight: bold;">Success Count</th><td style="width: 50px;" id='cSuccessCount'>10000000000</td>
+        <th style="width: 100px;font-weight: bold;">Failed Count</th><td  style="width: 50px;" id='cFailedCount'>10000000000</td>
+        <th style="width: 100px;font-weight: bold;">Avg Cost(ms)</th><td  style="width: 50px;" id='cAvgCost'>100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="bs-docs-separator" style="margin: 20px 0 20px;">
+
+	<table class="table table-bordered table-striped" style="width:810px">
+      <thead>
+        <tr>
+          <th style="width: 70px;">API</th>
+          <th style="width: 80px;">Access Count</th>
+          <th style="width: 60px;">Success Count</th>
+          <th style="width: 80px;">Failed Count</th>
+          <th style="width: 60px;">Avg Cost(ms)</th>
+        </tr>
+      </thead>
+      <tbody id='services'>
+      </tbody>
+    </table>
+    </div>
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
+
+    <script src="assets/js/holder/holder.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+
+    <script src="assets/js/application.js"></script>
+    <script src="assets/js/xl.js"></script>
+    <script src="assets/js/ks-common.js"></script>
+
+    <script>
+      var contextName = '';
+      
+      $(document).ready(loadData());
+
+      function loadData() {
+        contextName = xl.P('contextName') ;
+        $.getJSON("context.api?contextName="+contextName,
+            function(data, status) { 
+              var result = ks.checkResp(data) ;
+              if(result) {
+                processContext(result) ;
+                processRuntime(result) ;
+                processServices(result) ;
+              }
+            });
+      }
+
+      function processContext(result) {
+        var c = result.context ;
+        $('#contextName').text(c.contextName) ;
+        $('#path').text(c.path) ;
+      }
+
+      function processRuntime(result) {
+        var r = result.runtime ;
+        $('#cAccessCount').text(r.accessCount) ;
+        $('#cSuccessCount').text(r.successCount) ;
+        $('#cFailedCount').text(r.failedCount) ;
+        $('#cAvgCost').text(r.avgCost) ;
+      }
+      
+
+      function processServices(result) {
+        var services = result.services ;
+        if(services) {
+          var html = '' ;
+          for(var i in services) {
+            var c = services[i] ;
+            html += '<tr>' ;
+            html += "<td><a target='_blank' href='services.html?contextName="+contextName+"&serviceName="+c.serviceName+"'><span>"+c.serviceName+"</span></a></td>";
+            html += '<td>'+c.accessCount+'</td>' ;
+            html += '<td>'+c.successCount+'</td>' ;
+            html += '<td>'+c.failedCount+'</td>' ;
+            html += '<td>'+c.avgCost+'</td>' ;
+            html += '</tr>' ;
+          }
+        }
+        $('#services').html(html) ;
+      }
+
+
+    </script>
+
+  </body>
+</html>

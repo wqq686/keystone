@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/admin/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/admin/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/admin/assets/css/docs.css" rel="stylesheet">
+    <link href="/admin/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/admin/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/admin/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/admin/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/admin/assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/admin/assets/ico/favicon.png">
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar" style="padding-top: 10px;">
+  <div class="container">
+	<div class="navbar">
+	  <div class="navbar-inner navbar-fixed">
+	    <div class="container">
+	      <ul class="nav">
+          <li class="active"><a>Home</a></li>
+          <li><a>Context</a></li>
+          <li><a>Service</a></li>
+          <li><a>Method</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</div>
+	<h4>Server Information</h4>
+
+
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th style="width: 50px;font-weight: bold;">OS Version</th><td id='os'>CentOS 5.4</td>
+        <th style="width: 100px;font-weight: bold;">JVM Version</th><td id='jvm'>1.7.56</td>
+        <th></th><td style="display:none"></td>
+        <th style="display:none"></th><td style="display:none"></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <th style="width: 100px;font-weight: bold;">Cpus</th><td id='cpus'>1.0.0</td>
+        <th style="width: 100px;font-weight: bold;">TotalMemory(MB)</th><td id='totalMemory'>1.0.0</td>
+        <th style="width: 100px;font-weight: bold;">FreeMemory(MB)</th><td id='freeMemory'>1.0.0</td>
+        <th style="width: 100px;font-weight: bold;">MaxMemory(MB)</th><td id='maxMemory'>1.0.0</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table table-bordered" style="margin-top:0px;">
+    <tbody>
+      <tr>
+        <th style="width:150px;font-weight:bold;">Keystone Version</th><td style="width:190px;" id='version'>1.0.0</td>
+        <th style="width: 100px;font-weight:bold;">Install Path</th><td  colspan="6" style="width:500px;" id='path'>D:\workspace\touna-workspace\keystone-1.0.7</td>
+      </tr>
+      <tr>
+        <td style="width:100px;font-weight:bold;">Host</td><td style="width:100px;" id='host'>127.0.0.1</td>
+        <td style="width:100px;font-weight:bold;">Port</td><td style="width:100px;" id='port'>12580</td>
+        <td style="width:100px;font-weight:bold;">reactorCount</td><td style="width:100px;" id='reactorCount'>4</td>
+        <td style="width:100px;font-weight:bold;">isTcpNoDelay</td><td style="width:100px;" id='isTcpNoDelay'>true</td>
+      </tr>
+      <tr>
+        <td style="width:100px;font-weight:bold;">minThreadPoolSize</td><td style="width:100px;" id='minThreadPoolSize'>20</td>
+        <td style="width:100px;font-weight:bold;">maxThreadPoolSize</td><td style="width:100px;" id='maxThreadPoolSize'>200</td>
+        <td style="width:100px;font-weight:bold;">threadPoolQueueSize</td><td style="width:100px;" id='threadPoolQueueSize'>2000</td>
+        <td style="width:100px;font-weight:bold;">waitInQueue</td><td style="width:100px;" id='waitInQueue'>5s</td>
+      </tr>
+      <tr>
+        <td style="width:100px;font-weight:bold;">sessionTimeout</td><td style="width:100px;" id='sessionTimeout'>180s</td>
+        <td style="width:100px;font-weight:bold;">sessionCheckInterval</td><td style="width:100px;" id='sessionCheckInterval'>120s</td>
+        <td style="width:100px;font-weight:bold;">logRate</td><td style="width:100px;" id='logRate'>100%</td>
+        <td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <hr class="bs-docs-separator" style="margin: 20px 0 20px;">
+
+  <h4>Applications Information</h4>
+	<table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th style="width: 70px;">Context</th>
+          <th style="width: 10px;">Status</th>
+          <th style="width: 80px;">Access Count</th>
+          <th style="width: 80px;">Success Count</th>
+          <th style="width: 80px;">Failed Count</th>
+          <th style="width: 80px;">Avg Cost(ms)</th>
+          <th style="width: 345px;">Deploy Path</th>
+        </tr>
+      </thead>
+      <tbody id='apps'>
+      </tbody>
+    </table>
+    </div>
+
+    <script src="/admin/assets/js/jquery.js"></script>
+    <script src="/admin/assets/js/bootstrap-transition.js"></script>
+    <script src="/admin/assets/js/bootstrap-alert.js"></script>
+    <script src="/admin/assets/js/bootstrap-modal.js"></script>
+    <script src="/admin/assets/js/bootstrap-dropdown.js"></script>
+    <script src="/admin/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="/admin/assets/js/bootstrap-tab.js"></script>
+    <script src="/admin/assets/js/bootstrap-tooltip.js"></script>
+    <script src="/admin/assets/js/bootstrap-popover.js"></script>
+    <script src="/admin/assets/js/bootstrap-button.js"></script>
+    <script src="/admin/assets/js/bootstrap-collapse.js"></script>
+    <script src="/admin/assets/js/bootstrap-carousel.js"></script>
+    <script src="/admin/assets/js/bootstrap-typeahead.js"></script>
+    <script src="/admin/assets/js/bootstrap-affix.js"></script>
+    <script src="/admin/assets/js/holder/holder.js"></script>
+    <script src="/admin/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="/admin/assets/js/application.js"></script>
+
+    <script src="/admin/assets/js/xl.js"></script>
+    <script src="/admin/assets/js/ks-common.js"></script>
+
+    <script>
+
+      $(document).ready(loadApi());
+      
+      function loadApi() {
+        $.getJSON("/admin/server.api",
+            function(data, status) { 
+              var result = ks.checkResp(data) ;
+              if(result) {
+                dealServer(result) ;
+                dealConfig(result) ;
+                dealApps(result) ;
+              }
+            });
+      }
+
+
+      function dealServer(result) {
+        var e = result.server ;
+        $('#os').text(e.os) ;
+        $('#jvm').text(e.jvm) ;
+        
+        $('#cpus').text(e.cpus) ;
+        $('#totalMemory').text(e.totalMemory) ;
+        $('#freeMemory').text(e.freeMemory) ;
+        $('#maxMemory').text(e.maxMemory) ;
+
+        $('#version').text(e.version) ;
+        $('#path').text(e.path) ;
+      }
+
+
+
+      function dealConfig(result) {
+        var c = result.config ;
+        $('#host').text(c.host) ; $('#port').text(c.port) ;
+        //$('#os').text(c.os) ; $('#jvm').text(c.jvm) ;
+        $('#reactorCount').text(c.reactorCount) ;
+        $('#isTcpNoDelay').text(c.isTcpNoDelay) ; 
+        $('#minThreadPoolSize').text(c.minThreadPoolSize) ; 
+        $('#maxThreadPoolSize').text(c.maxThreadPoolSize) ;
+        $('#threadPoolQueueSize').text(c.threadPoolQueueSize) ; 
+        $('#waitInQueue').text(c.waitInQueue) ;
+        $('#sessionTimeout').text(c.sessionTimeout) ; 
+        $('#sessionCheckInterval').text(c.sessionCheckInterval) ;
+        $('#logRate').text(c.logRate) ;
+      }
+
+
+
+      function dealApps(result) {
+        var apps = result.apps ;
+        if(apps) {
+          var html = '' ;
+          for(var i in apps) {
+            var c = apps[i] ;
+            html += '<tr>' ;
+            html += "<td><a target='_blank' href='/admin/contexts.html?contextName="+c.contextName+"'><span>"+c.contextName+"</span></a></td>";
+            html += '<td>-</td>' ;
+            html += '<td>'+c.accessCount+'</td>' ;
+            html += '<td>'+c.successCount+'</td>' ;
+            html += '<td>'+c.failedCount+'</td>' ;
+            html += '<td>'+c.avgCost+'</td>' ;
+            html += '<td>'+c.path+'</td>' ;
+            html += '</tr>' ;
+          }
+        }
+        $('#apps').html(html) ;
+      }
+
+    </script>
+
+  </body>
+</html>
