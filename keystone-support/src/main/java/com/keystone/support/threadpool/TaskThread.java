@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keystone.threadpool;
+package com.keystone.support.threadpool;
 
 /**
  * A Thread implementation that records the time at which it was created.
