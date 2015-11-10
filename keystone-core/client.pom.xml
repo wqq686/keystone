@@ -35,7 +35,6 @@
 						<include>**/keystone/client/**</include>
 						<include>**/keystone/remoting/**</include>
 						<include>**/keystone/share/**</include>
-						<include>**/keystone/threadpool/**</include>
 						<include>**/keystone/thanspot/**</include>
 					</includes>
 				</configuration>
@@ -48,7 +47,6 @@
 						<include>**/keystone/client/**</include>
 						<include>**/keystone/remoting/**</include>
 						<include>**/keystone/share/**</include>
-						<include>**/keystone/threadpool/**</include>
 						<include>**/keystone/thanspot/**</include>
 					</includes>
 				</configuration>
@@ -61,7 +59,6 @@
 						<include>**/keystone/client/**</include>
 						<include>**/keystone/remoting/**</include>
 						<include>**/keystone/share/**</include>
-						<include>**/keystone/threadpool/**</include>
 						<include>**/keystone/thanspot/**</include>
 					</includes>
 				</configuration>
